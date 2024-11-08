@@ -2,14 +2,17 @@ const btnInserisciIndirizzo=document.querySelector("btn btn-primary");//bottone 
 const btnChiudi=document.querySelector("btn btn-secondary")//bottone per chiudere il pop up
 const btnInva=document.querySelector("btn btn-primary")//bottone per inviare l'indirizzo
 const indirizzo=document.getElementById("idIndirizzo");//campo i testo dove inserire l'indirizzo
-const url = `https://us1.locationiq.com/v1/search?format=json`;
+const cittaInserimento=document.getElementById("indirizzoCitta");
 const token=inputToken;
 //funzioneper far apparir il pop up e inserire i valori nel dizionaro places, i quali poi verranno fetchati
 btnInserisciIndirizzo.onclick = () => {
-   const indirizzo2=indirizzo.value;
-   places.push(indirizzo2); 
-    if (indirizzo2 !== undefined) {
-        fetch(url, {
+    let data={
+        "indirizzo":indirizzo.value(),
+        "città":cittaInserimento.value()
+    }
+    if (data.indirizzo !== undefined && data.cittInserimento !== undefined ) {
+        fetch("https://us1.locationiq.com/v1/search?key=API_TOKEN&q=indirizzo, cittaInserimento&format=json&
+, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -17,7 +20,7 @@ btnInserisciIndirizzo.onclick = () => {
             },
             body: JSON.stringify({
                 key:key,
-                value:JSON.stringify(indirizzo2)
+                value:JSON.stringify(data)
             })
           })
             .then(r => r.json()); {
@@ -26,7 +29,8 @@ btnInserisciIndirizzo.onclick = () => {
     }
 };
 
-fetch("https://ws.cipiaceinfo.it/cache/get", {
+fetch("https://us1.locationiq.com/v1/search?key=API_TOKEN&q=indirizzo2, città&format=json&
+", {
     method: "POST",
     headers: {
         "content-type": "application/json",
@@ -38,7 +42,7 @@ fetch("https://ws.cipiaceinfo.it/cache/get", {
 })
 .then(r => r.json())
 .then(data => {
-    let coordinata = JSON.parse(data.result);
+    let coordinate = JSON.parse(data.result);
     resolve(coordinata);
     places.push(coordinata);
 })
