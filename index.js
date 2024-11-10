@@ -2,11 +2,28 @@ import { generateMap } from "./map.js";
 import { fetchComponent } from "./fetch.js";
 
 const apiTokenLocation = "pk.215a9e370a8ded2ada287a67d2b90aaf"
-const btnInserisciIndirizzo=document.querySelector("btn btn-primary");//bottone che fa apparire il pop up
-const btnChiudi=document.querySelector("btn btn-secondary")//bottone per chiudere il pop up
 const btnInvia=document.querySelector("#prenotaButton")//bottone per inviare l'indirizzo
-const indirizzo=document.getElementById("idIndirizzo");//campo i testo dove inserire l'indirizzo
-const cittaInserimento=document.getElementById("indirizzoCitta");
+const indirizzo=document.querySelector("#idIndirizzo");//campo i testo dove inserire l'indirizzo
+const popup=document.getElementById("popup");//campo i testo dove inserire l'indirizzo
+const cittaInserimento=document.querySelector("#indirizzoCitta");
+let template=`
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>`
 let map = generateMap();
 let fetchC = fetchComponent();
 fetchC.build("cb6e2971-c0e8-4b36-99a3-4792429bab2f");
