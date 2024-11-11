@@ -2,8 +2,6 @@ import { generateMap } from "./map.js";
 import { fetchComponent } from "./fetch.js";
 
 const apiTokenLocation = "pk.215a9e370a8ded2ada287a67d2b90aaf"
-const btnInserisciIndirizzo=document.querySelector("btn btn-primary");//bottone che fa apparire il pop up
-const btnChiudi=document.querySelector("btn btn-secondary")//bottone per chiudere il pop up
 const btnInvia=document.querySelector("#prenotaButton")//bottone per inviare l'indirizzo
 const indirizzo=document.getElementById("idIndirizzo");//campo i testo dove inserire l'indirizzo
 const cittaInserimento=document.getElementById("indirizzoCitta");
