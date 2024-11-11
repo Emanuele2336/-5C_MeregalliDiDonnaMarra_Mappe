@@ -21,10 +21,7 @@ export const generateMap = () => {
 
     
       render: () => {
-         if (!map) {
-            console.error("Map has not been built yet. Please call build() first.");
-            return;
-         }
+         
          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: maxZoom,
             attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
